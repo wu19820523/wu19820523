@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>海洋職人 (Ocean Craftsman) - 魚類百科 (50種不重複珍稀版)</title>
+  <meta name="description" content="海洋職人 (Ocean Craftsman) - 匯聚 50 種完全不重複的珍稀觀賞魚與深度 Corydoras 鼠魚專題，提供專業水質參數、微距攝影展示、魚缸計算機與職人養殖指南。">
+  <meta name="keywords" content="魚類百科, 鼠魚, Corydoras, 觀賞魚, 水族, 水質計算機, 異型魚, 短鯛, 亞洲紅龍, 七彩神仙">
+
+  <!-- 字體引入 (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Manrope:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- 圖標庫 (Font Awesome) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- 核心樣式表 -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ==========================================
+       1. 頂部毛玻璃導覽列 (Navbar)
+       ========================================== -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#hero" class="brand-logo">
+        <div class="logo-icon">
+          <i class="fas fa-water" style="color: var(--primary); font-size: 1.25rem;"></i>
+        </div>
+        <div class="brand-title">
+          <span class="brand-name">OCEAN CRAFTSMAN</span>
+          <span class="brand-tagline">海洋職人 · 魚類百科</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#hero" class="nav-link active">品牌精神</a></li>
+        <li><a href="#curated" class="nav-link">精選名種</a></li>
+        <li><a href="#collection" class="nav-link">50種典藏百科</a></li>
+        <li><a href="#calculator" class="nav-link">水質計算機</a></li>
+        <li><a href="#showcase" class="nav-link">展示中心</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- 水下環境音效切換 -->
+        <button class="btn-audio" id="btn-audio" title="開啟/關閉水下白噪音氛圍">
+          <i class="fas fa-volume-up"></i>
+        </button>
+
+        <!-- 我的水族收藏清單按鈕 -->
+        <button class="btn-wishlist" id="btn-wishlist">
+          <i class="fas fa-heart"></i>
+          <span>典藏清單</span>
+          <span class="wishlist-count" id="wishlist-count">0</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==========================================
+       2. 英雄首頁區塊 (Hero Section)
+       ========================================== -->
+  <section class="hero-section" id="hero">
+    <div class="hero-backdrop-glow"></div>
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-pill-badge">
+          <i class="fas fa-certificate"></i> 50 種不重複珍稀水下名品收錄
+        </div>
+        <h1 class="hero-title">
+          探索水下職人之藝
+          <span class="hero-title-highlight">沉浸式珍稀魚類百科</span>
+        </h1>
+        <p class="hero-description">
+          專注於熱帶水族生態的美學與科學。深度收錄 28 款 Corydoras 鼠魚珍稀名品與頂級旗艦觀賞魚，呈現極致微距攝影、精確水質參數與職人繁育智慧。
+        </p>
+
+        <div class="hero-actions">
+          <a href="#collection" class="btn-primary">
+            <i class="fas fa-compass"></i> 探索 50 種珍稀百科
+          </a>
+          <a href="#calculator" class="btn-secondary">
+            <i class="fas fa-calculator"></i> 水質與魚缸實驗室
+          </a>
+        </div>
+
+        <div class="hero-stats-row">
+          <div class="stat-item">
+            <span class="stat-number">50</span>
+            <span class="stat-label">珍稀不重複物種</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">28+</span>
+            <span class="stat-label">鼠魚深度專題</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">職人水質科學參數</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 英雄右側視覺旗艦卡 -->
+      <div class="hero-visual-card">
+        <div class="hero-image-wrapper">
+          <img src="images/hero.jpg" alt="海洋職人水下生態造景">
+          <div class="hero-floating-tag">
+            <div class="floating-tag-info">
+              <h4>亞馬遜黑水流域生境</h4>
+              <p>pH 5.5 ~ 6.5 · 軟水雨林生態系</p>
+            </div>
+            <a href="#collection" class="btn-wishlist" style="padding: 6px 12px; font-size: 0.75rem;">
+              即刻查閱
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       3. 精選旗艦魚種 (Curated Species Section)
+       ========================================== -->
+  <section class="curated-section" id="curated">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">ARTISANAL CURATION</span>
+        <h2 class="section-title">職人精選 · 旗艦觀賞名種</h2>
+        <p class="section-subtitle">
+          匯聚水族界極具藝術價值與收藏地位的標誌性品種，每種皆承載著大師級繁育技藝與極致水下姿態。
+        </p>
+      </div>
+
+      <div class="curated-grid" id="curated-grid">
+        <!-- 由 js/app.js 動態渲染精選旗艦魚種 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       4. 職人 50 種百科典藏 (Artisanal Collection 50)
+       ========================================== -->
+  <section class="collection-section" id="collection">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">COMPREHENSIVE ENCYCLOPEDIA</span>
+        <h2 class="section-title">職人典藏 · 50種珍稀魚類圖鑑</h2>
+        <p class="section-subtitle">
+          50 組完全不重複物種，深度涵蓋長吻/短吻/雷射/巨斑鼠魚、帝王異型、南美短鯛與精品脂鯉，提供多維搜尋與即時過濾。
+        </p>
+      </div>
+
+      <!-- 篩選與工具控制台 -->
+      <div class="collection-controls">
+        <div class="search-and-view-row">
+          <div class="search-box-wrapper">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" id="search-species" class="search-input" placeholder="搜尋中英文名、學名 (Corydoras)、CW編號、原產地流域...">
+            <i class="fas fa-times search-clear-btn" id="search-clear-btn"></i>
+          </div>
+
+          <div class="sort-and-view-actions">
+            <div class="sort-select-wrapper">
+              <select id="sort-species" class="sort-select">
+                <option value="default">預設排序 (系統推薦)</option>
+                <option value="diff-asc">難度：從易到難 (★1 → ★5)</option>
+                <option value="diff-desc">難度：大師進階 (★5 → ★1)</option>
+                <option value="size-desc">體型：由大至小</option>
+                <option value="temp-desc">耐熱水溫：高溫優先</option>
+              </select>
+              <i class="fas fa-chevron-down sort-arrow"></i>
+            </div>
+
+            <div class="view-toggle-group">
+              <button class="view-toggle-btn active" id="btn-view-grid" title="網格卡片視圖">
+                <i class="fas fa-th-large"></i>
+              </button>
+              <button class="view-toggle-btn" id="btn-view-list" title="精密清單視圖">
+                <i class="fas fa-list"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 分類與難度標籤切換 -->
+        <div class="filter-tabs-row">
+          <div class="category-filter-group">
+            <button class="filter-chip active" data-category="all">全部物種 (50)</button>
+            <button class="filter-chip" data-category="corydoras"><i class="fas fa-fish"></i> 鼠魚系列 (28)</button>
+            <button class="filter-chip" data-category="flagship"><i class="fas fa-crown"></i> 旗艦大師 (7)</button>
+            <button class="filter-chip" data-category="plecos"><i class="fas fa-shield-alt"></i> 珍稀異型 (2)</button>
+            <button class="filter-chip" data-category="cichlids"><i class="fas fa-gem"></i> 南美短鯛 (8)</button>
+            <button class="filter-chip" data-category="tetras"><i class="fas fa-water"></i> 精品脂鯉 (7)</button>
+          </div>
+
+          <div class="difficulty-filter-group">
+            <span class="difficulty-label">飼養門檻：</span>
+            <button class="diff-chip active" data-diff="all">全部</button>
+            <button class="diff-chip" data-diff="easy">新手友善 ★1~2</button>
+            <button class="diff-chip" data-diff="medium">進階挑戰 ★3~4</button>
+            <button class="diff-chip" data-diff="hard">大師收藏 ★5</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 狀態統計列 -->
+      <div class="results-status-bar">
+        <div class="results-count" id="results-count">
+          共收錄 <strong>50</strong> 種珍稀物種
+        </div>
+      </div>
+
+      <!-- 50 種魚類主渲染區 -->
+      <div class="species-grid-container" id="species-grid">
+        <!-- 由 js/app.js 渲染 50 種卡片 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       5. 職人水質實驗室與魚缸計算機 (Water Lab & Calculator)
+       ========================================== -->
+  <section class="calculator-section" id="calculator">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">WATER PROTOCOL & LAB</span>
+        <h2 class="section-title">職人水質實驗室 · 魚缸配置計算機</h2>
+        <p class="section-subtitle">
+          輸入魚缸規格與預計飼育量，精準計算淨水容量、過濾器每小時循環流量、加溫功率與生物密度安全指標。
+        </p>
+      </div>
+
+      <div class="calculator-wrapper">
+        <div class="calc-grid">
+          <!-- 左側輸入區 -->
+          <div class="calc-input-pane">
+            <div class="calc-pane-title">
+              <i class="fas fa-sliders-h"></i> 魚缸尺寸與底砂造景設定
+            </div>
+
+            <div class="calc-input-group">
+              <label>快捷標準缸型選擇：</label>
+              <div class="preset-tank-sizes">
+                <button class="btn-tank-preset" data-l="30" data-w="18" data-h="24">1尺小型缸 (30×18×24)</button>
+                <button class="btn-tank-preset" data-l="60" data-w="30" data-h="36">2尺標準缸 (60×30×36)</button>
+                <button class="btn-tank-preset" data-l="90" data-w="45" data-h="45">3尺水草缸 (90×45×45)</button>
+                <button class="btn-tank-preset" data-l="120" data-w="50" data-h="60">4尺旗艦缸 (120×50×60)</button>
+                <button class="btn-tank-preset" data-l="150" data-w="60" data-h="60">5尺巨型缸 (150×60×60)</button>
+              </div>
+            </div>
+
+            <div class="calc-input-group">
+              <label>魚缸長度 / 寬度 / 高度 (cm)：</label>
+              <div class="dimension-inputs-row">
+                <div class="input-with-unit">
+                  <input type="number" id="calc-length" class="calc-number-input" value="60" min="10" max="500">
+                  <span class="input-unit">長cm</span>
+                </div>
+                <div class="input-with-unit">
+                  <input type="number" id="calc-width" class="calc-number-input" value="30" min="10" max="300">
+                  <span class="input-unit">寬cm</span>
+                </div>
+                <div class="input-with-unit">
+                  <input type="number" id="calc-height" class="calc-number-input" value="36" min="10" max="300">
+                  <span class="input-unit">高cm</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-input-group">
+              <label>底砂鋪設厚度 (cm)：</label>
+              <div class="input-with-unit">
+                <input type="number" id="calc-substrate" class="calc-number-input" value="3" min="0" max="20" step="0.5">
+                <span class="input-unit">厚度cm</span>
+              </div>
+            </div>
+
+            <div class="calc-input-group">
+              <label>缸內預計飼養魚隻成體總長度合計 (cm)：</label>
+              <div class="input-with-unit">
+                <input type="number" id="calc-fish-cm" class="calc-number-input" value="28" min="1" max="1000">
+                <span class="input-unit">總公分數</span>
+              </div>
+              <span style="font-size:0.75rem; color:var(--text-muted);">例：5隻 5cm 鼠魚 + 10隻 2cm 燈魚 = 45 cm</span>
+            </div>
+          </div>
+
+          <!-- 右側計算成果 -->
+          <div class="calc-output-pane">
+            <div class="calc-pane-title" style="color:var(--text-primary);">
+              <i class="fas fa-chart-pie" style="color:var(--accent-cyan);"></i> 職人系統配置推薦數值
+            </div>
+
+            <div class="output-metrics-grid">
+              <div class="metric-box">
+                <span class="metric-box-label">總水體容量 (Gross)</span>
+                <div class="metric-box-val" id="out-gross-vol">64.8 L</div>
+                <span class="metric-box-sub">缸體最大幾何容積</span>
+              </div>
+
+              <div class="metric-box">
+                <span class="metric-box-label">實質有效淨水 (Net)</span>
+                <div class="metric-box-val" id="out-net-vol" style="color:var(--accent-cyan);">51.3 L</div>
+                <span class="metric-box-sub">扣除底砂與造景空間</span>
+              </div>
+
+              <div class="metric-box">
+                <span class="metric-box-label">建議過濾流量 (L/h)</span>
+                <div class="metric-box-val" id="out-filter-flow" style="color:var(--accent-emerald);">250 ~ 410 L/h</div>
+                <span class="metric-box-sub">每小時 5~8 次水體循環</span>
+              </div>
+
+              <div class="metric-box">
+                <span class="metric-box-label">推薦加溫棒功率 (W)</span>
+                <div class="metric-box-val" id="out-heater-watt" style="color:var(--accent-coral);">100 W</div>
+                <span class="metric-box-sub">每公升 1.5 ~ 2 瓦配比</span>
+              </div>
+            </div>
+
+            <!-- 生物密度評估 -->
+            <div class="density-eval-box" id="density-eval-box">
+              <div class="density-status-title" id="out-density-status">
+                <i class="fas fa-check-circle" style="color:var(--accent-emerald);"></i> 密度優良 (安全狀態)
+              </div>
+              <div class="density-status-desc" id="out-density-desc">
+                當前生物負載每公升水約 0.55 cm 魚體，水質緩衝極佳，適合鼠魚與各類珍稀魚種繁衍生息。
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       6. 微距展示中心 (Showcase Gallery)
+       ========================================== -->
+  <section class="showcase-section" id="showcase">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">MACRO PHOTOGRAPHY</span>
+        <h2 class="section-title">展示中心 · 微距光影之美</h2>
+        <p class="section-subtitle">
+          聚焦於魚鱗金屬折射、鬍鬚微觀構造、背鰭針芒與自然游姿，感受生命在水中的極致美感。
+        </p>
+      </div>
+
+      <div class="gallery-mosaic-grid">
+        <div class="gallery-item span-2">
+          <img src="images/hero.jpg" alt="微距亞馬遜生境">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-title">黑水深林 · 沉木水草微生境</div>
+            <div class="gallery-item-desc">點擊放大檢視微距細節</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="images/betta.jpg" alt="皇家藍冠尾鬥魚">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-title">冠尾鬥魚 · 針芒皇冠展開</div>
+            <div class="gallery-item-desc">點擊放大檢視微距細節</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="images/discus.jpg" alt="黑格爾野生七彩神仙">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-title">野生黑格爾 · 第五暗黑棟線</div>
+            <div class="gallery-item-desc">點擊放大檢視微距細節</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="images/arowana.jpg" alt="頂級亞洲紅龍">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-title">特級亞洲紅龍 · 火焰鱗框</div>
+            <div class="gallery-item-desc">點擊放大檢視微距細節</div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="images/pleco.jpg" alt="帝王斑馬異型 L046">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-title">帝王斑馬異型 L046 · 黑白條紋</div>
+            <div class="gallery-item-desc">點擊放大檢視微距細節</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       7. 頁尾區塊 (Footer)
+       ========================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand">
+          <div class="brand-logo" style="margin-bottom: 12px;">
+            <div class="logo-icon">
+              <i class="fas fa-water" style="color: var(--primary);"></i>
+            </div>
+            <div class="brand-title">
+              <span class="brand-name">OCEAN CRAFTSMAN</span>
+              <span class="brand-tagline">海洋職人 · 魚類百科</span>
+            </div>
+          </div>
+          <p>
+            致敬自然水下生物的多樣性與工匠精神。我們致力於推廣專業科學的水族知識、友善生態的養殖標準與珍稀物種保育意識。
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>典藏導覽</h4>
+          <ul class="footer-links">
+            <li><a href="#collection">鼠魚系列 (28種)</a></li>
+            <li><a href="#collection">旗艦大師級觀賞魚</a></li>
+            <li><a href="#collection">珍稀異型魚系列</a></li>
+            <li><a href="#collection">南美短鯛與慈鯛</a></li>
+            <li><a href="#collection">精品脂鯉與奇異魚種</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>職人工具與指引</h4>
+          <ul class="footer-links">
+            <li><a href="#calculator">魚缸水體與流量計算機</a></li>
+            <li><a href="#calculator">生物密度安全警示標準</a></li>
+            <li><a href="#showcase">高解析度微距攝影牆</a></li>
+            <li><a href="#curated">水質溫度與酸鹼度指引</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>保育與法律宣告</h4>
+          <ul class="footer-links">
+            <li><a href="javascript:void(0)">CITES 華盛頓公約合規</a></li>
+            <li><a href="javascript:void(0)">野生魚隻檢疫規範</a></li>
+            <li><a href="javascript:void(0)">人工純系繁育倡議</a></li>
+            <li><a href="javascript:void(0)">永續生態保護理念</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div>
+          © 2026 海洋職人 (Ocean Craftsman) - 魚類百科 (50種不重複珍稀版). 版權所有.
+        </div>
+        <a href="#hero" class="back-to-top-btn">
+          回到頂部 <i class="fas fa-arrow-up"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       8. 物種詳細彈窗 (Species Modal)
+       ========================================== -->
+  <div class="modal-overlay" id="species-modal">
+    <div class="modal-window">
+      <button class="modal-close-btn" id="modal-close-btn">
+        <i class="fas fa-times"></i>
+      </button>
+      <div class="modal-body-content" id="modal-body-dynamic">
+        <!-- 內容由 js/app.js 動態注入 -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       9. 典藏收藏清單抽屜 (Wishlist Drawer)
+       ========================================== -->
+  <div class="modal-overlay" id="wishlist-overlay" style="z-index:2050;"></div>
+  <div class="wishlist-drawer" id="wishlist-drawer">
+    <div class="wishlist-header">
+      <h3><i class="fas fa-heart" style="color:var(--accent-ruby); margin-right:8px;"></i> 我的職人水族願望清單</h3>
+      <button class="modal-close-btn" id="wishlist-close-btn" style="position:static; width:34px; height:34px;">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="wishlist-items-container" id="wishlist-items-container">
+      <!-- 收藏清單項目由 JS 渲染 -->
+    </div>
+    <div class="wishlist-footer">
+      <button class="btn-primary" id="btn-export-wishlist" style="width:100%; justify-content:center; padding:12px 0;">
+        <i class="fas fa-download"></i> 導出養殖配置清單 (TXT)
+      </button>
+      <button class="btn-secondary" id="btn-clear-wishlist" style="width:100%; justify-content:center; padding:8px 0; font-size:0.82rem; border:none; color:var(--text-muted);">
+        清空全部收藏
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       10. 微距展示燈箱 (Gallery Lightbox)
+       ========================================== -->
+  <div class="modal-overlay" id="gallery-lightbox">
+    <div style="position:relative; max-width:1100px; width:90%; text-align:center;">
+      <button class="modal-close-btn" id="lightbox-close" style="top:-50px; right:0;">
+        <i class="fas fa-times"></i>
+      </button>
+      <img id="lightbox-img" src="" alt="微距攝影放大" style="max-height:80vh; border-radius:var(--radius-lg); border:1px solid var(--border-gold); margin:0 auto; box-shadow:0 20px 50px rgba(0,0,0,0.9);">
+      <div id="lightbox-caption" style="margin-top:16px; color:#fff;"></div>
+    </div>
+  </div>
+
+  <!-- 引入資料與核心應用腳本 -->
+  <script src="js/species-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
