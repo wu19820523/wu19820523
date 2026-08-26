@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Serpentine Quest 貪食蛇大冒險 - 網頁街機遊戲</title>
+  <meta name="description" content="Serpentine Quest (貪食蛇大冒險) - 具備現代街機質感、霓虹特效與沉浸音效的貪吃蛇網頁遊戲。支援電腦鍵盤與手機虛擬方向鍵！">
+  <meta name="keywords" content="貪食蛇, 貪吃蛇, Serpentine Quest, 網頁遊戲, HTML5 Game, Snake Game">
+
+  <!-- Google Fonts: Fredoka & Quicksand -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Custom CSS Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Ambient Glowing Background FX -->
+  <div class="bg-glow-orb orb-1"></div>
+  <div class="bg-glow-orb orb-2"></div>
+
+  <main class="game-container">
+    <!-- Top Header -->
+    <header class="game-header">
+      <div class="title-badge">
+        <div class="logo-icon">
+          🐍
+        </div>
+        <div class="title-text">
+          <h1>SNAKE QUEST</h1>
+          <div class="subtitle">貪食蛇大冒險</div>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button id="soundBtn" class="icon-btn active" title="切換音效" aria-label="切換音效">
+          <i id="soundIcon" class="fa-solid fa-volume-high"></i>
+        </button>
+        <button id="pauseBtn" class="icon-btn" title="暫停遊戲" aria-label="暫停遊戲">
+          <i class="fa-solid fa-pause"></i>
+        </button>
+        <button id="settingsBtn" class="icon-btn" title="設定與造型" aria-label="設定與造型">
+          <i class="fa-solid fa-sliders"></i>
+        </button>
+        <button id="infoBtn" class="icon-btn" title="遊戲說明" aria-label="遊戲說明">
+          <i class="fa-solid fa-circle-question"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Score Status Dashboard -->
+    <section class="status-dashboard">
+      <div class="status-card current-score">
+        <div class="card-icon">🍎</div>
+        <div class="card-info">
+          <span class="card-label">目前分數</span>
+          <span id="currentScore" class="card-value">0</span>
+        </div>
+      </div>
+      <div class="status-card high-score">
+        <div class="card-icon">👑</div>
+        <div class="card-info">
+          <span class="card-label">歷史最高紀錄</span>
+          <span id="highScore" class="card-value highlight">0</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Game Arena Area -->
+    <div class="arena-wrapper" id="arenaWrapper">
+      <canvas id="gameCanvas"></canvas>
+
+      <!-- Ready / Start Overlay -->
+      <div class="overlay-screen active" id="startOverlay">
+        <div class="overlay-content">
+          <div class="overlay-icon">🐍</div>
+          <h2 class="overlay-title">準備好冒險了嗎？</h2>
+          <p class="overlay-desc">操控靈活的貪食蛇吃下紅蘋果成長，抓緊時機捕捉限時出現的黃金之星！</p>
+          <button id="startBtn" class="btn-primary">
+            <i class="fa-solid fa-play"></i> 開始遊戲
+          </button>
+        </div>
+      </div>
+
+      <!-- Pause Overlay -->
+      <div class="overlay-screen" id="pauseOverlay">
+        <div class="overlay-content">
+          <div class="overlay-icon">⏸️</div>
+          <h2 class="overlay-title">遊戲已暫停</h2>
+          <p class="overlay-desc">深呼吸一下，隨時準備繼續！</p>
+          <button id="resumeBtn" class="btn-primary">
+            <i class="fa-solid fa-play"></i> 繼續遊戲
+          </button>
+          <button id="restartBtn" class="btn-secondary">
+            <i class="fa-solid fa-rotate-right"></i> 重新開始
+          </button>
+        </div>
+      </div>
+
+      <!-- Game Over Overlay -->
+      <div class="overlay-screen" id="gameOverOverlay">
+        <div class="overlay-content">
+          <div class="overlay-icon">💥</div>
+          <h2 class="overlay-title">GAME OVER</h2>
+          <p id="gameOverReason" class="overlay-desc">撞到牆壁或身體了！</p>
+
+          <div id="newRecordBadge" class="new-record-badge" style="display: none;">
+            <i class="fa-solid fa-trophy"></i> 創下新紀錄！
+          </div>
+
+          <div class="game-over-stats">
+            <div class="stat-item">
+              <span class="stat-title">本次得分</span>
+              <span id="finalScore" class="stat-num">0</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-title">歷史最高</span>
+              <span id="finalHighScore" class="stat-num gold">0</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-title">吃下食物</span>
+              <span id="finalApples" class="stat-num">0</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-title">蛇身長度</span>
+              <span id="finalLength" class="stat-num">3</span>
+            </div>
+          </div>
+
+          <button id="playAgainBtn" class="btn-primary">
+            <i class="fa-solid fa-rotate-right"></i> 再玩一局
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Virtual D-Pad Controls -->
+    <section class="controls-container">
+      <div class="dpad-layout">
+        <button id="dpadUp" class="dpad-btn dpad-up" aria-label="向上移動">
+          <i class="fa-solid fa-chevron-up"></i>
+        </button>
+        <button id="dpadLeft" class="dpad-btn dpad-left" aria-label="向左移動">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <div class="dpad-center">
+          <i class="fa-solid fa-gamepad"></i>
+        </div>
+        <button id="dpadRight" class="dpad-btn dpad-right" aria-label="向右移動">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <button id="dpadDown" class="dpad-btn dpad-down" aria-label="向下移動">
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+      </div>
+
+      <!-- Desktop Keyboard Controls Hint Bar -->
+      <div class="desktop-hints">
+        <div class="hint-item">
+          <span class="kbd-chip">↑ ↓ ← →</span> 或 <span class="kbd-chip">W A S D</span> 移動
+        </div>
+        <div class="hint-item">
+          <span class="kbd-chip">SPACE</span> 暫停
+        </div>
+        <div class="hint-item">
+          <span class="kbd-chip">R</span> 重開
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Settings & Customization Modal -->
+  <div class="modal-backdrop" id="settingsModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2><i class="fa-solid fa-sliders"></i> 遊戲設定 & 造型</h2>
+        <button id="closeSettingsBtn" class="modal-close" aria-label="關閉設定">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Difficulty Selection -->
+      <div class="modal-section">
+        <label class="section-label">遊戲難度 (移動速度)</label>
+        <div class="option-grid">
+          <button class="option-btn" data-diff="easy">
+            <span class="opt-title">悠閒慢速</span>
+            <span class="opt-desc">新手/兒童推薦</span>
+          </button>
+          <button class="option-btn selected" data-diff="normal">
+            <span class="opt-title">經典標準</span>
+            <span class="opt-desc">平衡流暢</span>
+          </button>
+          <button class="option-btn" data-diff="hard">
+            <span class="opt-title">極速挑戰</span>
+            <span class="opt-desc">街機高難度</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Skin Selector -->
+      <div class="modal-section">
+        <label class="section-label">選擇蛇身造型 (Skins)</label>
+        <div class="skin-grid">
+          <div class="skin-item selected" data-skin="neon">
+            <div class="skin-preview" style="background: linear-gradient(135deg, #4ade80, #16a34a);"></div>
+            <span class="skin-name">經典霓虹</span>
+          </div>
+          <div class="skin-item" data-skin="cyan">
+            <div class="skin-preview" style="background: linear-gradient(135deg, #38bdf8, #0369a1);"></div>
+            <span class="skin-name">賽博青藍</span>
+          </div>
+          <div class="skin-item" data-skin="blaze">
+            <div class="skin-preview" style="background: linear-gradient(135deg, #fb923c, #c2410c);"></div>
+            <span class="skin-name">烈焰熔岩</span>
+          </div>
+          <div class="skin-item" data-skin="pink">
+            <div class="skin-preview" style="background: linear-gradient(135deg, #f472b6, #9d174d);"></div>
+            <span class="skin-name">夢幻粉櫻</span>
+          </div>
+          <div class="skin-item" data-skin="gold">
+            <div class="skin-preview" style="background: linear-gradient(135deg, #fde047, #ca8a04);"></div>
+            <span class="skin-name">璀璨星金</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game Guide & Info Modal -->
+  <div class="modal-backdrop" id="infoModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2><i class="fa-solid fa-circle-question"></i> 遊戲說明與玩法</h2>
+        <button id="closeInfoBtn" class="modal-close" aria-label="關閉說明">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="guide-list">
+        <div class="guide-item">
+          <div class="guide-icon">🎮</div>
+          <div class="guide-text">
+            <h4>操作方式</h4>
+            <p>電腦端可使用 <strong>方向鍵</strong> 或 <strong>WASD</strong> 控制移動；手機平板端可點擊下方 <strong>虛擬方向鍵</strong> 或在畫布上 <strong>滑動手勢</strong> 轉向。</p>
+          </div>
+        </div>
+
+        <div class="guide-item">
+          <div class="guide-icon">🍎</div>
+          <div class="guide-text">
+            <h4>普通蘋果 (+1 分)</h4>
+            <p>每吃一顆紅蘋果，分數增加 1 分，貪食蛇長度增加 1 節。</p>
+          </div>
+        </div>
+
+        <div class="guide-item">
+          <div class="guide-icon">⭐</div>
+          <div class="guide-text">
+            <h4>黃金之星 (+5 分)</h4>
+            <p>隨機出現且具有倒數計時光環的稀有果實，在消失前搶先吃下可獲得 5 倍加分！</p>
+          </div>
+        </div>
+
+        <div class="guide-item">
+          <div class="guide-icon">⚠️</div>
+          <div class="guide-text">
+            <h4>撞擊規則</h4>
+            <p>不可撞擊競技場四周的邊界牆壁，也不可咬到自己的身體，否則遊戲結束！</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/audio.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
